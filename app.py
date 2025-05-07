@@ -101,17 +101,24 @@ def testUpdate (usuario,nuevo_email):
    db.commit()
    cerrarConexion()
 
+##############################################33
+#07/05
+
 
 @app.route("/Mostrar-Datos-Plantilla/<int:id>")
 def datos_plantilla(id):
     abrirConexion()
     cursor = db.cursor()
-    cursor.execute("SELECT id, usuario, email FROM usuarios WHERE id = ?; ", (id,))
+    cursor.execute("SELECT id, usuario, email, telefono, direccion FROM usuarios WHERE id = ?; ", (id,))
     res = cursor.fetchone()
     cerrarConexion()
     usuario = None
     email = None
+    direccion = None
+    telefono = None
     if res != None:
         usuario=res['usuario']
         email=res['email']
-    return render_template("datos.html", id=id, usuario=usuario, email=email)
+        telefono=res['telefono']
+        direccion=res['direccion']
+    return render_template("datos.html", id=id, usuario=usuario, email=email,direccion=direccion, telefono=telefono)
