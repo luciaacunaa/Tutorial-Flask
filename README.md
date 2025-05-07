@@ -1,5 +1,4 @@
-# Tutorial-Flask
-python -m venv .venv
+python -m venv .venv 
 source .venv/bin/activate
-pip install flask
-flask --version
+ pip install flask
+ flsk run --debug
